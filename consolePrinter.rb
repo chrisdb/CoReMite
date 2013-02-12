@@ -17,6 +17,8 @@ class ConsolePrinter
     @users = u
     @days = d
 
+    @@DETAILED_DAYS = [@@DETAILED_DAYS, @days.length].min
+
     @preserved_space = @@CHARS_PER_USER + (2 * @@PADDING)
     @variable_line_length = (@preserved_space + 1) * @users.size
   end

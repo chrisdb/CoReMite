@@ -2,7 +2,8 @@ require './userDataCollector'
 require './consolePrinter'
 require 'date'
 
-props = YAML.load( open('./config.yaml') )
+config = ARGV[0] || './config.yaml'
+props = YAML.load( open(config) )
 number_of_days = props['BUSINESS_DAYS_TO_TRACK'] || 10
 detailed = props['DETAILED'] || false
 
@@ -21,7 +22,7 @@ end
 
 days = get_last_business_days(Date.today, number_of_days)
 
-udc = UserDataCollector.new
+udc = UserDataCollector.new(props)
 cp = ConsolePrinter.new(udc.get_user_data, days)
 cp.print_times
 

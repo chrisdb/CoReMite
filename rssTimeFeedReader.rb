@@ -8,9 +8,7 @@ class RssTimeFeedReader
   @MITE_KEY
   @MITE_ACCOUNT
 
-  def initialize( a, b )
-    props = YAML.load( open('./config.yaml') )
-
+  def initialize( a, b, props )
     @MITE_KEY = props["MITE_KEY"]
     @MITE_ACCOUNT = props["MITE_ACCOUNT"]
 

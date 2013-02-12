@@ -1,2 +1,2 @@
 #!/bin/bash -l
-ruby CoReMite.rb
+ruby CoReMite.rb $1
