@@ -1,0 +1,11 @@
+MITE_KEY: 1234567890abcde
+MITE_ACCOUNT: mymiteaccount
+
+BUSINESS_DAYS_TO_TRACK: 15 # Detailed output is hardcoded to 5 business days
+DETAILED: true
+
+USERS:
+    John: 12345
+    Jane: 23456
+    Foo: 34567
+    Bar: 45678
