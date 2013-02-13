@@ -71,6 +71,7 @@ class RssTimeFeedReader
     activity = parse_content(content, @@ACTIVITY_REGEX)
     comment = parse_content(content, @@COMMENT_REGEX)
     time = parse_content(content, @@TIME_REGEX)
+    time = (time.split(":")[0].to_f + (time.split(":")[1].to_f / 60)).round(2)
 
     t << {:project => project, :activity => activity, :comment => comment, :time => time}
     {d => t}
