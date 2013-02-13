@@ -18,6 +18,7 @@ class UserDataCollector
       rtf = RssTimeFeedReader.new(user["name"], user["mite_id"], @props)
       user.merge!( {"daily_values" => rtf.get_time_entries_per_day} )
       user.merge!( {"daily_activity_values" => rtf.get_time_activity_entries_per_day} )
+      user.merge!( {"full_report" => rtf.get_full_report} )
     end
     @users
   end

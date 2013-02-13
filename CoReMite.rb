@@ -6,7 +6,6 @@ config = ARGV[0] || './config.yaml'
 props = YAML.load( open(config) )
 number_of_days = props['BUSINESS_DAYS_TO_TRACK'] || 10
 
-
 grouped_by_day = props['SHOW_GROUPED_BY_DAY'].nil? ? true : props['SHOW_GROUPED_BY_DAY']
 grouped_by_day_and_activity = props['SHOW_GROUPED_BY_DAY_AND_ACTIVITY'].nil? ? false : props['SHOW_GROUPED_BY_DAY_AND_ACTIVITY']
 full_report = props['SHOW_FULL_REPORT'].nil? ? false : props['SHOW_FULL_REPORT']
@@ -27,7 +26,7 @@ end
 days = get_last_business_days(Date.today, number_of_days)
 
 udc = UserDataCollector.new(props)
-cp = ConsolePrinter.new(udc.get_user_data, days)
+cp = ConsolePrinter.new(udc.get_user_data, days, props)
 
 if grouped_by_day
   cp.print_daily_times
@@ -35,4 +34,8 @@ end
 
 if grouped_by_day_and_activity
   cp.print_daily_activity_times
+end
+
+if full_report
+  cp.print_full_reports
 end
