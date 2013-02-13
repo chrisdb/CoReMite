@@ -38,7 +38,7 @@ class RssTimeFeedReader
     get_time_entries(url, method(:get_time_entries_per_day_callback))
   end
 
-  def get_extended_time_entries_per_day_callback(item, result)
+  def get_time_activity_entries_per_day_callback(item, result)
     d = item.pubDate.to_date
     t = result[d] ? result[d] : []
     temp = item.description.gsub('[', '').gsub(']', '').gsub('"', '').split(', ')
@@ -46,9 +46,9 @@ class RssTimeFeedReader
     {d => t}
   end
 
-  def get_extended_time_entries_per_day
+  def get_time_activity_entries_per_day
     url = "https://#{@MITE_ACCOUNT}.mite.yo.lk/reports/time_entries.rss?key=#{@MITE_KEY}&user_id=#{mite_id}&group_by=day%2Cservice"
-    get_time_entries(url, method(:get_extended_time_entries_per_day_callback))
+    get_time_entries(url, method(:get_time_activity_entries_per_day_callback))
   end
 
 end
