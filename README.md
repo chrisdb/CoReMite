@@ -9,7 +9,6 @@ You have to create a **config.yaml** (see [config-sample.yaml](./config-sample.y
 ## Limitations
 
 * I only tested this script with ruby 1.9.3. It definitely won't work with 1.8.x!
-* Usernames should not be longer than 12 characters, otherwise the console output will break.
 
 ## Copyright
 

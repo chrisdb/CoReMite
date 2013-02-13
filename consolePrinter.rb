@@ -4,8 +4,9 @@ class ConsolePrinter
 
   attr_accessor :users, :days
 
-  @@CHARS_PER_USER = 12
   @@PADDING = 2
+  @@TIME_ROW_LENGTH = 12
+  @CHARS_PER_USER
   @preserved_space
   @variable_line_length
 
@@ -17,10 +18,11 @@ class ConsolePrinter
     @users = u
     @days = d
 
+    @CHARS_PER_USER = @users.map { |p| p['name'].length }.max
     @@DETAILED_DAYS = [@@DETAILED_DAYS, @days.length].min
 
-    @preserved_space = @@CHARS_PER_USER + (2 * @@PADDING)
-    @variable_line_length = (@preserved_space + 1) * @users.size
+    @preserved_space = @CHARS_PER_USER + (2 * @@PADDING)
+    @variable_line_length = ((@preserved_space + 1) * @users.size)
   end
 
   def print_separator_with_char(length=nil, separator="=")
@@ -28,7 +30,7 @@ class ConsolePrinter
       1.upto(length).each {|i| print separator}
       print "\n"
     else
-      1.upto((@preserved_space + 1) * users.size + @@CHARS_PER_USER).each {|i| print separator}
+      1.upto((@preserved_space + 1) * users.size + @@TIME_ROW_LENGTH).each {|i| print separator}
       print "\n"
     end
   end
@@ -65,12 +67,12 @@ class ConsolePrinter
   end
 
   def print_times
-    puts "\n" + " Times tracked in mite by day ".center(@variable_line_length + @@CHARS_PER_USER, "=")
+    puts "\n" + " Times tracked in mite by day ".center(@variable_line_length + @@TIME_ROW_LENGTH, "=")
     print_separator
     print_column_names
     print_separator
     print_data_columns
-    puts " The End ".center(@variable_line_length + @@CHARS_PER_USER, "=")
+    puts " The End ".center(@variable_line_length + @@TIME_ROW_LENGTH, "=")
     print_separator
     print "\n"
   end
