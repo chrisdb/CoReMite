@@ -1,3 +1,3 @@
 #!/bin/bash -l
 cd "$(dirname "$0")"
-ruby CoReMite.rb $1
+ruby lib/CoReMite.rb $1
