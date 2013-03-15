@@ -8,7 +8,7 @@ You have to create a **config.yaml** (see [config-sample.yaml](./config-sample.y
 
 ## Limitations
 
-* I only tested this script with ruby 1.9.3. It definitely won't work with 1.8.x!
+* I only tested this script with ruby 1.9.3 and 2.0.0. It definitely won't work with 1.8.x!
 
 ## Copyright
 
